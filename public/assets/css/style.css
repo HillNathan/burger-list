@@ -1,0 +1,36 @@
+body {
+    background-image: url("../../images/armando-ascorve-morales-ypZI_CA91M0-unsplash_resized.jpg");
+    color: orangered;
+}
+
+h1 {
+    font-weight: 900;
+}
+
+.translucent-black {
+    background: rgba(0, 0, 0, 0.7)
+}
+
+header {
+    margin-bottom: 10px
+}
+
+h2 {
+    text-decoration: underline;
+}
+
+.list-group-item {
+    text-align:left;
+    padding: 15px;
+    margin: 3px;
+    background-color: black;
+}
+
+.list-group {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.fas {
+    padding-right: 10px;
+}
