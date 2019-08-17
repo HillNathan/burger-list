@@ -1,5 +1,6 @@
 const mysql = require('mysql')
-require("dotenv").config()
+
+console.log('connection connected...')
 
 exports.getConnection = (host, port, user, password, database) => {
     return mysql.createConnection({

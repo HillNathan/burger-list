@@ -1,37 +1,46 @@
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <form class="translucent-black p-4">
-                    <div class="form-group row">
-                        <label for="burger" class="col-4"><b>Type in the name of a burger to add:</b></label>
-                        <input type="text" class="form-control col-8" id="burger" rows="3"></input>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-10"></div>
-                        <button type="submit" class="btn btn-warning col-2">Add a Burger</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="row justify-content-around">
-            <div class="col-5 text-center translucent-black m-2">
-                <h2>Un-devoured Burgers</h2>
-                <ul class="list-group">
-                    {{#each unDevoured}}
-                        <li class="list-group-item"><i class="fas fa-hamburger"></i>{{name}}<button class="btn btn-warning btn-sm float-right" id="{{id}}">Devoured</button></li>
-                    {{/each}}
-                </ul>
-            </div>
-
-            <div class="col-5 text-center translucent-black m-2">
-                <h2>Devoured Burgers</h2>
-                <ul class="list-group">
-                    {{#each devoured}}
-                        <li class="list-group-item"><i class="fas fa-hamburger"></i>{{name}}</li>
-                    {{#each devoured}}
-
-                </ul>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form class="translucent-black p-4" action="/" method="post">
+                <div class="form-group row">
+                    <label for="burger" class="col-4"><b>Type in the name of a burger to add:</b></label>
+                    <input type="text" class="form-control col-8" name="name" rows="3"></input>
+                </div>
+                <div class="form-group row">
+                    <div class="col-10"></div>
+                    <button type="submit" class="btn btn-warning col-2">Add a Burger</button>
+                </div>
+            </form>
         </div>
     </div>
+
+    <div class="row justify-content-around">
+        <div class="col-5 text-center translucent-black m-2">
+            <h2>Un-devoured Burgers</h2>
+            <ul class="list-group">
+            {{#each burgers}}
+                {{#unless devoured}}
+                    <li class="list-group-item"><i class="fas fa-hamburger"></i>{{name}}
+                    <button class="btn btn-warning btn-sm float-right" data-id="{{id}}">Devour</button></li>
+                    </li>
+                {{/unless}}
+            {{/each}}
+            </ul>
+        </div>
+
+        <div class="col-5 text-center translucent-black m-2">
+            <h2>Devoured Burgers</h2>
+            <ulclass="list-group">
+            {{#each burgers}}
+                {{#if devoured}}
+                    <li class="list-group-item"><i class="fas fa-hamburger"></i>{{name}}
+                    </li>
+                {{/if}}
+            {{/each}}
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
