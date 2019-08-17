@@ -21,7 +21,7 @@
             {{#each burgers}}
                 {{#unless devoured}}
                     <li class="list-group-item"><i class="fas fa-hamburger"></i>{{name}}
-                    <button class="btn btn-warning btn-sm float-right" data-id="{{id}}">Devour</button></li>
+                    <button class="btn btn-warning btn-sm float-right devour-burger" data-id="{{id}}">Devour</button></li>
                     </li>
                 {{/unless}}
             {{/each}}
@@ -38,9 +38,22 @@
                 {{/if}}
             {{/each}}
             </ul>
-
         </div>
-
     </div>
-
 </div>
+
+<script>
+    $(".devour-burger").click(function() {
+        const burgerID = $(this).attr("data-id")
+        const queryURL = "/add"
+        console.log(burgerID)
+        $.ajax({
+            type: 'POST',
+            url: queryURL, 
+            data: {id: burgerID },
+        }).then(response => {
+            location.reload()
+        })
+    });
+
+</script>

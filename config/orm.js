@@ -36,15 +36,13 @@ const ORMFunctions = {
     },
 
     // method to update the status of an existing burger:
-    updateSingleItem: (tableName, columnName, newValue, key, keyValue) => {
+    updateSingleItem: (tableName, columnName, newValue, key, keyValue, cb) => {
         queryString = "UPDATE ?? SET ?? = ? WHERE ?? = ?"
         connection.query(queryString, [tableName, columnName, newValue, key, keyValue],
-        (err,data) => {
+        (err, data) => {
             if (err) throw err
-            return data
+            cb(data)
         })
-
-
     }
 }
 

@@ -12,10 +12,13 @@ const burger = {
         console.log("data received from controller:")
         console.log(newData)
         ORM.insertSingleItem('burgers', 'name', newData , callback)
+    },
+
+    updateBurger: function(devouredID, callback) {
+        console.log("data received from controller:")
+        console.log(devouredID)
+        ORM.updateSingleItem('burgers', 'devoured', true, 'id', parseInt(devouredID),callback)
     }
-
-    
-
 }
 
 module.exports = burger;
