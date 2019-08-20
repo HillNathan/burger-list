@@ -21,7 +21,7 @@ router.get("/", function(req, res) {
 //post route to update a burger
 router.post("/", function(req, res) {
     burger.newBurger(req.body.name, response => {
-        console.log(response.affectedRows + " rows added to database")
+        console.log(response.affectedRows + " rows added to database.")
     })
     res.redirect('/')
 });
@@ -29,10 +29,17 @@ router.post("/", function(req, res) {
 // post route to add a new burger
 router.post("/add", function(req, res) {
     burger.updateBurger(req.body.id, response => {
-        console.log(response.affectedRows + " rows updated in the database")
+        console.log(response.affectedRows + " rows updated in the database.")
     })
     res.redirect('/')
 });
+
+router.post("/del", function(req,res) {
+    burger.removeBurger(req.body.id, response => {
+        console.log(response.affectedRows + " rows deleted from the database.")
+    })
+    res.redirect('/')
+})
 
 
 module.exports = router;

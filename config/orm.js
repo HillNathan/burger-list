@@ -43,6 +43,15 @@ const ORMFunctions = {
             if (err) throw err
             cb(data)
         })
+    },
+
+    deleteSingleItem: (tableName, key, keyValue, cb) => {
+        queryString = "DELETE FROM ?? WHERE ?? = ?"
+        connection.query(queryString, [tableName, key, keyValue],
+        (err,data) => {
+            if (err) throw err
+            cb(data)
+        })
     }
 }
 

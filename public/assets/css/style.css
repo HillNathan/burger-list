@@ -34,3 +34,8 @@ h2 {
 .fas {
     padding-right: 10px;
 }
+
+.delete {
+    margin-left: 5px;
+    text-align: center;
+}
