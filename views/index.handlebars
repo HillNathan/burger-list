@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form class="translucent-black p-4 m-1" action="/" method="post">
+            <form class="translucent-black p-4 m-1" action="/add" method="post">
                 <div class="form-group row">
                     <label for="burger" class="col-4"><b>Type in the name of a burger to add:</b></label>
                     <input type="text" class="form-control col-8" name="name" rows="3"></input>
@@ -47,7 +47,7 @@
 <script>
     $(".devour-burger").on('click', function() {
         const burgerID = $(this).attr("data-id")
-        const queryURL = "/add"
+        const queryURL = "/update"
         console.log(burgerID)
         $.ajax({
             type: 'POST',

@@ -17,7 +17,7 @@ const ORMFunctions = {
         });
     },
 
-    // method to select all burgers:
+    // method to select all items in a table:
     selectAll: (selectTable, cb) => {
         connection.query("SELECT * FROM ??", [selectTable], 
         function(err,data) {
@@ -26,7 +26,7 @@ const ORMFunctions = {
         })
     },
 
-    // method to insert a new burger:
+    // method to insert a new item into a table:
     insertSingleItem: (insertTable, colName, newInfo, cb) => {
         connection.query("INSERT INTO ?? (??) VALUES (?)", [insertTable, colName, newInfo], 
         (err, data) => {
@@ -35,7 +35,7 @@ const ORMFunctions = {
         })
     },
 
-    // method to update the status of an existing burger:
+    // method to update the status of an existing item:
     updateSingleItem: (tableName, columnName, newValue, key, keyValue, cb) => {
         queryString = "UPDATE ?? SET ?? = ? WHERE ?? = ?"
         connection.query(queryString, [tableName, columnName, newValue, key, keyValue],
@@ -45,6 +45,7 @@ const ORMFunctions = {
         })
     },
 
+    // method to hard-delete a specific item in the table
     deleteSingleItem: (tableName, key, keyValue, cb) => {
         queryString = "DELETE FROM ?? WHERE ?? = ?"
         connection.query(queryString, [tableName, key, keyValue],

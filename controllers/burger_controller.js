@@ -10,7 +10,7 @@ const burger = require('../models/burger.js')
 
 // get route for all burgers
 router.get("/", function(req, res) {
-    console.log('Get Route Hit...')
+    console.log('Route "/" with method GET.' )
     burger.getAllBurgers(response => {
         let burgerObj = { burgers: response }
         res.render("index", burgerObj);
@@ -19,7 +19,8 @@ router.get("/", function(req, res) {
 });
 
 //post route to update a burger
-router.post("/", function(req, res) {
+router.post("/add", function(req, res) {
+    console.log('Route "/" with method POST.' )
     burger.newBurger(req.body.name, response => {
         console.log(response.affectedRows + " rows added to database.")
     })
@@ -27,14 +28,17 @@ router.post("/", function(req, res) {
 });
 
 // post route to add a new burger
-router.post("/add", function(req, res) {
+router.post("/update", function(req, res) {
+    console.log('Route "/add" with method POST.' )
     burger.updateBurger(req.body.id, response => {
         console.log(response.affectedRows + " rows updated in the database.")
     })
     res.redirect('/')
 });
 
+// post route to delete a burger
 router.post("/del", function(req,res) {
+    console.log('Route "/del" with method POST.' )
     burger.removeBurger(req.body.id, response => {
         console.log(response.affectedRows + " rows deleted from the database.")
     })
