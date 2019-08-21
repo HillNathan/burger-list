@@ -14,7 +14,6 @@ router.get("/", function(req, res) {
     burger.getAllBurgers(response => {
         let burgerObj = { burgers: response }
         res.render("index", burgerObj);
-        // res.json(burgerObj)
     })
 });
 
@@ -43,6 +42,13 @@ router.post("/del", function(req,res) {
         console.log(response.affectedRows + " rows deleted from the database.")
     })
     res.redirect('/')
+})
+
+router.get("/api/burgers", function(req,res) {
+    console.log('API GET route hit to return all burgers as JSON.')
+    burger.getAllBurgers(response => {
+        res.json(burgerObj)
+    })
 })
 
 

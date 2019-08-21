@@ -19,11 +19,13 @@
             <h2>Un-devoured Burgers</h2>
             <ul class="list-group">
             {{#each burgers}}
-                {{#unless devoured}}
+                {{#unless deleted}}
+                  {{#unless devoured}}
                     <li class="list-group-item"><i class="fas fa-hamburger"></i>{{name}}
                     <button class="btn btn-dark btn-sm float-right delete text-center" data-id="{{id}}"><i class="fas fa-times"></i></button>
                     <button class="btn btn-warning btn-sm float-right devour-burger" data-id="{{id}}">Devour</button></li>
                     </li>
+                  {{/unless}}  
                 {{/unless}}
             {{/each}}
             </ul>
@@ -33,11 +35,13 @@
             <h2>Devoured Burgers</h2>
             <ulclass="list-group">
             {{#each burgers}}
+              {{#unless deleted}}
                 {{#if devoured}}
                     <li class="list-group-item"><i class="fas fa-hamburger"></i>{{name}}
                     <button class="btn btn-dark btn-sm float-right delete text-center" data-id="{{id}}"><i class="fas fa-times"></i></button>
                     </li>
                 {{/if}}
+              {{/unless}}
             {{/each}}
             </ul>
         </div>
