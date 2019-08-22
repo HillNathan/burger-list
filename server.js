@@ -3,8 +3,8 @@ const express = require('express')
 const app = express()
 var PORT = process.env.PORT || 7999;
 
-var expressWinston = require('express-winston');
-var winston = require('winston'); // for transports.Console
+var logger = require('./config/winston.js');
+// var winston = require('winston'); // for transports.Console
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -21,17 +21,7 @@ app.set("view engine", "handlebars");
 const router = require('./controllers/burger_controller.js')
 
 // ADD IN WINSTON AS MIDDLEWARE LOGGER
-app.use(expressWinston.logger({
-  level: 'info',
-  transports: [
-    new winston.transports.File({ filename: 'server.log'})
-  ],
-  
-  format: winston.format.combine(
-    winston.format.colorize(),
-    winston.format.json()
-  )
-}));
+app.use(logger);
 
 // START USING THE ROUTER WITH THE MIDDLEWARE LOGGER INCLUDED
 app.use(router);
