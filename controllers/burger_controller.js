@@ -44,9 +44,12 @@ router.post("/del", function(req,res) {
     res.redirect('/')
 })
 
+// API route to return all burgers in the database as a JSON object
 router.get("/api/burgers", function(req,res) {
     console.log('API GET route hit to return all burgers as JSON.')
     burger.getAllBurgers(response => {
+        // return the data from the database as json
+        let burgerObj = { burgers: response }
         res.json(burgerObj)
     })
 })
