@@ -54,6 +54,8 @@ const ORMFunctions = {
             cb(data)
         })
     }
+    // this method is no longer used by the database, however I am leaving it here so that I 
+    //   have it saved here for future reference. 
 }
 
 module.exports = ORMFunctions;
